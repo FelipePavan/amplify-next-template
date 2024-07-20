@@ -50,7 +50,7 @@ export default function App() {
           <li 
           onClick={() => deleteTodo(todo.id)}
           key={todo.id}>
-          <span dangerouslySetInnerHTML={{ __html: todo.content }} />
+          <span dangerouslySetInnerHTML={{ __html: todo.content || ''}} />
           </li>
         ))}
       </ul>
