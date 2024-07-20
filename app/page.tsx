@@ -26,9 +26,13 @@ export default function App() {
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
-    });
+    const person = window.prompt("SEU NOME FERA");
+    const content = window.prompt("DESCREVA SEU ROLE");
+    if (person && content) {
+      client.models.Todo.create({
+        content: `<strong>${person.toUpperCase()}</strong> respondeu: ${content}`,
+      });
+    }
   }
 
     
@@ -38,22 +42,23 @@ export default function App() {
 
   return (
     <main>
-      <h1>Respostas</h1>
+      <h1>Esquenta virtual pro churras</h1>
       <h1>Descreva o seu role estilo churras perfeito</h1>
-      <button onClick={createTodo}>+ new</button>
+      <button onClick={createTodo}>Responder</button>
       <ul>
         {todos.map((todo) => (
           <li 
           onClick={() => deleteTodo(todo.id)}
-          key={todo.id}>{todo.content}
+          key={todo.id}>
+          <span dangerouslySetInnerHTML={{ __html: todo.content }} />
           </li>
         ))}
       </ul>
       <div>
-        Esquenta virtual pro churrasco
+        Manda alguma coisa ai, deu trabalho fazer essa porra
         <br />
-        {/* <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial. */}
+        <a href="https://www.youtube.com/watch?v=zDZaTCum2A0" target="_blank">
+        Link secreto não clique
         </a>
       </div>
     </main>
