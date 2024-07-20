@@ -111,7 +111,7 @@ export default function App() {
           <ul>
             {todos.map((todo) => (
               <li
-                onClick={() => deleteTodo(todo.id)}
+                // onClick={() => deleteTodo(todo.id)}
                 key={todo.id}
               >
                 <span dangerouslySetInnerHTML={{ __html: todo.content || '' }} />
@@ -126,7 +126,7 @@ export default function App() {
           <ul>
             {secondTodos.map((todo) => (
               <li
-                onClick={() => deleteSecondTodo(todo.id)}
+                // onClick={() => deleteSecondTodo(todo.id)}
                 key={todo.id}
               >
                 <span dangerouslySetInnerHTML={{ __html: todo.content || '' }} />
@@ -148,3 +148,7 @@ export default function App() {
     </div>
   );
 }
+
+
+// REQUENTEDEONTE: muito Álcool, paiero, musica ruim, Giovani vomitando e souza no final
+// MURILO FURÃO: álcool e jiu jitsu no chão da vó do pavan, finalizando com pizza gigante paga pelo requentedeonte
