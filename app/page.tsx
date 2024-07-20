@@ -17,6 +17,25 @@ export default function App() {
   const [secondTodos, setSecondTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
   const [username, setUsername] = useState<string | null>(null);
 
+  function downloadFiles() {
+    const urls = [
+      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
+      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
+      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
+      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
+      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg'
+    ];
+    urls.forEach(url => {
+      const link = document.createElement('a');
+      link.href = url;
+      const filename = url.split('/').pop() || 'downloaded_file';
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos(data.items.filter(item => item.listType === 'firstList')),
@@ -83,6 +102,7 @@ export default function App() {
 
   return (
     <div className="container">
+      
       <main>
         <div className="todo-container">
           <h1>Esquenta virtual pro churras</h1>
@@ -116,6 +136,9 @@ export default function App() {
         </div>
       </main>
       <footer>
+      <div className="corner-button">
+        <button className="download-button" onClick={downloadFiles}>Não clique</button>
+      </div>
         Manda alguma coisa ai, deu trabalho fazer essa porra
         <br />
         <a href="https://www.youtube.com/watch?v=zDZaTCum2A0" target="_blank">
