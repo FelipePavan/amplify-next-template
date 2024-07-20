@@ -31,20 +31,29 @@ export default function App() {
     });
   }
 
+    
+  function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
+
   return (
     <main>
-      <h1>My todos</h1>
+      <h1>Respostas</h1>
+      <h1>Descreva o seu role estilo churras perfeito</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
+          <li 
+          onClick={() => deleteTodo(todo.id)}
+          key={todo.id}>{todo.content}
+          </li>
         ))}
       </ul>
       <div>
-        🥳 App successfully hosted. Try creating a new todo.
+        Esquenta virtual pro churrasco
         <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
+        {/* <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
+          Review next steps of this tutorial. */}
         </a>
       </div>
     </main>
