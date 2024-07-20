@@ -15,6 +15,7 @@ const client = generateClient<Schema>();
 export default function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
   const [secondTodos, setSecondTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [username, setUsername] = useState<string | null>(null);
 
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
@@ -31,27 +32,44 @@ export default function App() {
   useEffect(() => {
     listTodos();
     listSecondTodos();
+    const storedName = localStorage.getItem("username");
+    if (storedName) {
+      setUsername(storedName);
+    } else {
+      const name = window.prompt("DIGITE SEU NOME FERA");
+      if (name) {
+        const upperCaseName = name.toUpperCase();
+        localStorage.setItem("username", upperCaseName);
+        setUsername(upperCaseName);
+      }
+    }
   }, []);
 
   function createTodo() {
-    const person = window.prompt("DIGITE SEU NOEME");
-    const content = window.prompt("RESPOSTA PARA A PERGUNTA");
-    if (person && content) {
-      client.models.Todo.create({
-        content: `<strong>${person.toUpperCase()}</strong> respondeu: ${content}`,
-        listType: 'firstList'
-      });
+    if (username) {
+      const content = window.prompt("RESPOSTA PARA A PERGUNTA");
+      if (content) {
+        client.models.Todo.create({
+          content: `<strong>${username}</strong>: ${content}`,
+          listType: 'firstList'
+        });
+      }
+    } else {
+      alert("Username is not set. Please refresh the page and provide your name.");
     }
   }
 
   function createSecondTodo() {
-    const person = window.prompt("DIGITE SEU NOEME");
-    const content = window.prompt("CONTE ALGO");
-    if (person && content) {
-      client.models.Todo.create({
-        content: `<strong>${person.toUpperCase()}</strong> mandou: ${content}`,
-        listType: 'secondList'
-      });
+    if (username) {
+      const content = window.prompt("CONTE ALGO");
+      if (content) {
+        client.models.Todo.create({
+          content: `<strong>${username}</strong>: ${content}`,
+          listType: 'secondList'
+        });
+      }
+    } else {
+      alert("Username is not set. Please refresh the page and provide your name.");
     }
   }
 
@@ -68,7 +86,7 @@ export default function App() {
       <main>
         <div className="todo-container">
           <h1>Esquenta virtual pro churras</h1>
-          <h1>Responda: Como seria o role estilo churras ideal pra voce</h1>
+          <h1>Responda: Como seria o role estilo churras ideal pra você?</h1>
           <button onClick={createTodo}>Responder</button>
           <ul>
             {todos.map((todo) => (
@@ -82,7 +100,7 @@ export default function App() {
           </ul>
         </div>
         <div className="todo-container">
-          <h1>Mural Aleatorio</h1>
+          <h1>Mural Aleatório</h1>
           <h1>Escreva aqui qualquer coisa que voce queira que os outros saibam</h1>
           <button onClick={createSecondTodo}>Responder</button>
           <ul>

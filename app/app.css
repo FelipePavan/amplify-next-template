@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: linear-gradient(180deg, rgb(98, 81, 194), rgb(255, 255, 255));
+  background: linear-gradient(180deg, rgb(67, 42, 212), rgb(255, 255, 255));
   display: flex;
   flex-direction: column;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,7 +15,7 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin-bottom: 20px;
 }
 
@@ -81,6 +81,7 @@ li:hover {
 a {
   font-weight: 800;
   text-decoration: none;
+  color: rgba(0, 0, 0, 0.158);
 }
 
 footer {
@@ -89,5 +90,5 @@ footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  width: 100%;
+  width: 90%;
 }
