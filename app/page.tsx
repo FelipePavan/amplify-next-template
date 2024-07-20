@@ -19,11 +19,11 @@ export default function App() {
 
   function downloadFiles() {
     const urls = [
-      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
-      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
-      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
-      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg',
-      'https://thumbs.dreamstime.com/z/happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.jpg'
+      'happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png',
+      'happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png',
+      'happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png',
+      'happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png',
+      'happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png'
     ];
     urls.forEach(url => {
       const link = document.createElement('a');
@@ -137,7 +137,8 @@ export default function App() {
       </main>
       <footer>
       <div className="corner-button">
-        <button className="download-button" onClick={downloadFiles}>Não clique</button>
+        {/* <button className="download-button" onClick={downloadFiles}>Não clique</button> */}
+        <a className="download-button" href='happy-cartoon-penis-tongue-happy-cartoon-penis-tongue-vector-107168800.png' download>NÃO CLIQUE</a>
       </div>
         Manda alguma coisa ai, deu trabalho fazer essa porra
         <br />
@@ -149,6 +150,3 @@ export default function App() {
   );
 }
 
-
-// REQUENTEDEONTE: muito Álcool, paiero, musica ruim, Giovani vomitando e souza no final
-// MURILO FURÃO: álcool e jiu jitsu no chão da vó do pavan, finalizando com pizza gigante paga pelo requentedeonte
